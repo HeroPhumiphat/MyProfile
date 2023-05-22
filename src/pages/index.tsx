@@ -16,7 +16,7 @@ type objectProject = {
 export default function Home() {
   let textArr: string[] = [
     'Developer',
-    'Engineer'
+    'Front-End'
   ]
 
   const [text, setText] = React.useState<string[]>(textArr)
@@ -150,7 +150,7 @@ export default function Home() {
               </div>
             </div>
             <div className='flex justify-center md:justify-start'>
-              <p className='w-[400px] mt-5 text-center md:text-start md:ml-2'>                สวัสดีครับ, ผมชื่อ<span className='text-blue-200'>ภูมิพัฒน์</span>
+              <p className='w-[400px] mt-5 text-center md:text-start md:ml-2'>สวัสดีครับ, ผมชื่อ<span className='text-blue-200'>ภูมิพัฒน์</span>
                 ตอนนี้กำลังหางาน Developer
                 <br/><span>ผมมีความสนใจในการสร้าง<span className='text-lime-300'>เว็ปแอปพลิเคชั่น</span>ครับ
                 </span>
