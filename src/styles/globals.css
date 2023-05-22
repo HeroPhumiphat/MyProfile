@@ -2,26 +2,210 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
   }
-}
+  
+  body::-webkit-scrollbar,
+  html::-webkit-scrollbar {
+    display: none;
+  }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  body,
+  html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  body {
+    background-color: #171717;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .fog {
+    animation: fog calc(30s * var(--i)) linear infinite both;
+  }
+
+  @keyframes fog {
+    from {
+      transform: translateX(180%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  #menubar {
+    animation: menunav calc(2s * var(--x)) linear both;
+  }
+
+  @keyframes menunav {
+    from {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .boxText {
+    animation: textShow 1s linear alternate;
+  }
+
+  @keyframes textShow {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+  }
+
+  .test-text {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+  }
+
+  .test-text p {
+    margin: 0;
+    overflow: hidden;
+    opacity: 0;
+  }
+  .test-text>p.show {
+    transform: translateY(0%);
+    animation: textShow .5s ease;
+    opacity: 1;
+  }
+
+  @keyframes textShow {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+    
+  .test-text>p.text-out {
+    display: inline-block;
+    animation: textOut .3s ease;
+  }
+
+  @keyframes textOut {
+    0% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-80%);
+      opacity: 0;
+    }
+  }
+
+  .test-text>p.text-in {
+    animation: textIn .5s ease;
+    display: inline-block;
+  }
+
+  @keyframes textIn {
+    0% {
+      transform: translateY(80%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+
+  .imageShow { 
+    transform-origin: 0% 80%;
+    animation: imageShow 5s alternate infinite;
+  }
+
+  @keyframes imageShow {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    50% {
+      transform: rotateZ(-3deg);
+    }
+    100% {
+      transform: rotateZ(-3deg);
+    }
+  }
+
+  .boxImage {
+    animation: boxImage 8s alternate infinite;
+  }
+
+  @keyframes boxImage {
+    0% {
+      transform: translateY(5%);
+    }
+  }
+  
+  .boxArrow:hover+.aar {
+    background-color: #c3d5a7;
+    animation: aar 1s ease alternate;
+  }
+  
+  @keyframes aar {
+    0% {
+      background-color: white;
+    }
+    100% {
+      background-color: #c3d5a7;
+    }
+  }
+
+  .bgTe {
+    animation: bgTe .5s ease linear infinite;
+  }
+
+  @keyframes bgTe {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    100% {
+      transform: rotateZ(360deg);
+    }
+  }
+
+  .textPT {
+    -webkit-text-stroke: 1px #a3e635;
+    z-index: 10;
+    /* text-shadow: 0px 0px 5px #3c3c3c; */
+  }
+
+  .bg1 {
+    animation: bg1 10s infinite alternate;
+  }
+
+  @keyframes bg1 {
+    0% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(-5%);
+    }
+  }
 }
