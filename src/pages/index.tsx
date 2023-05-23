@@ -1,10 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown, faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
-import {  } from '@fortawesome/free-regular-svg-icons'
 
 type objectProject = {
   projectname: string,
@@ -14,6 +14,8 @@ type objectProject = {
 }
 
 export default function Home() {
+  const router = useRouter();
+
   let textArr: string[] = [
     'Developer',
     'Front-End'
@@ -104,6 +106,11 @@ export default function Home() {
     }
   ]
 
+  const onClickBtnView = (path: string) => {
+    if (path.length > 1) {
+      router.push(path)
+    }
+  }
 
   return (
     <div>
@@ -145,7 +152,7 @@ export default function Home() {
               <div className='ml-1.5'>
                 <p className='text-2xl underline underline-offset-4'>I would like to be a </p>
               </div>
-              <div className='test-text w-[150px] text-start ml-2 mt-2 py-2 text-3xl font-semibold'>
+              <div className='test-text w-[150px] text-start ml-2 mt-2 py-2 text-3xl font-semibold overflow-hidden'>
                 <p className='inline-block show text-in text-red-200' ref={textRef}>{textShow}</p>
               </div>
             </div>
@@ -244,7 +251,7 @@ export default function Home() {
                     <div className='w-[240px] mt-4 pl-2 flex flex-wrap space-x-3'>
                       {/* <Link href={'/project/' + (index + 1)} className='bg-lime-600 hover:bg-lime-700 w-fit px-3 rounded-md py-1'>Example</Link> */}
                       <Link href={doc.code} className='bg-blue-600 hover:bg-blue-700 w-fit px-3 rounded-md py-1'>code</Link>
-                      <Link href={doc.view} className={doc.view.length < 1 ? 'bg-amber-900 cursor-not-allowed w-fit px-3 rounded-md py-1' : 'bg-amber-500 hover:bg-amber-600 w-fit px-3 rounded-md py-1'}>view</Link>
+                      <button className={doc.view.length < 1 ? 'bg-amber-900 cursor-not-allowed w-fit px-3 rounded-md py-1' : 'bg-amber-500 hover:bg-amber-600 w-fit px-3 rounded-md py-1'} disabled={doc.view.length < 1 ? true : false } onClick={() => onClickBtnView(doc.view)}>view</button>
                     </div>
                   </div>
                 ))
